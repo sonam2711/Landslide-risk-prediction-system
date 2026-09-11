@@ -31,14 +31,16 @@ async function loadModel() {
                 return value !== "2018" && value !== "29 Phulban";
             });
         }
-      if (col === "Vegetation") {
+     if (col === "Vegetation") {
     options = options.filter(v => {
         const value = String(v).trim();
 
-        return !value.startsWith("Date road to NH 49") &&
+        return value !== "RD" &&
+               !value.startsWith("Date road to NH 49") &&
                !value.startsWith("Kohima 25.669 94.114") &&
-               value !== "RD" &&
                !value.startsWith("Semi Village 30.5155 79.0619");
+    });
+}
 
         // Add all remaining options
         options.forEach(v => {
