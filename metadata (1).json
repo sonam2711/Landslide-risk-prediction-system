@@ -1,0 +1,21 @@
+{
+  "name": "Northeast India Landslide Risk Predictor",
+  "target": "Risk derived from Movement _Type",
+  "mapping": {
+    "Slide": "MEDIUM",
+    "Fall": "HIGH",
+    "Other": "LOW"
+  },
+  "inputs": [
+    "State",
+    "District",
+    "Latitude",
+    "Longitude",
+    "Movement_History",
+    "Annual_Rainfall_Normal_mm",
+    "Rainfall_Pattern",
+    "Soil_Distribution",
+    "Vegetation"
+  ],
+  "note": "Static GitHub Pages version. No backend required."
+}
