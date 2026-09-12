@@ -18,24 +18,28 @@ async function loadModel() {
         let options = [...MODEL.mappings[col]];
 
         // Remove ONLY the unwanted Rainfall Pattern option
-        if (col === "Rainfall_Pattern") {
-            options = options.filter(v =>
-                !String(v).startsWith("2018 13966 KER/IDK/58B16/2018/08") && String(v).trim() !== "RD"
-            );
-        }
+         if (col === "Rainfall_Pattern") {
+    options = options.filter(v =>
+        String(v).trim().toLowerCase() !== "unknown" &&
+        !String(v).startsWith("2018 13966 KER/IDK/58B16/2018/08") &&
+        String(v).trim() !== "RD"
+    );
+}
 
-        // Remove ONLY these two Soil Distribution options
-        if (col === "Soil_Distribution") {
-            options = options.filter(v => {
-                const value = String(v).trim();
-                return value !== "2018" && value !== "29 Phulban";
-            });
-        }
-     if (col === "Vegetation") {
+if (col === "Soil_Distribution") {
     options = options.filter(v => {
         const value = String(v).trim();
+        return value.toLowerCase() !== "unknown" &&
+               value !== "2018" &&
+               value !== "29 Phulban";
+    });
+}
 
-        return value !== "RD" &&
+if (col === "Vegetation") {
+    options = options.filter(v => {
+        const value = String(v).trim();
+        return value.toLowerCase() !== "unknown" &&
+               value !== "RD" &&
                !value.startsWith("Date road to NH 49") &&
                !value.startsWith("Kohima 25.669 94.114") &&
                !value.startsWith("Semi Village 30.5155 79.0619");
